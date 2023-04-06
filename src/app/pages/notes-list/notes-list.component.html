@@ -1,0 +1,44 @@
+<!-- here we need a notes card component -->
+      <!-- two ways two give template expression one is this property of body and title in component class another is in function -->
+      <!-- we can do propeety binding two way this is first way with square bracket and single quate in double"''"-->
+<div class="main-container">
+
+    <div class="search-bar-container">
+        <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="Filter">
+              <span class="icon is-small is-left">
+                <i class="fa fa-search"></i>
+              </span>
+            </p> 
+          </div>
+    </div>
+
+    <div class="notes-list">
+        
+        <app-note-card 
+              *ngFor = "let note of notes; let i=index"
+              [title]= "note.title" 
+              [body]= "note.body" (click)="test(i)"
+              (click)="deleteNote(i)"></app-note-card> 
+
+        <!-- <app-note-card [title]="'Loreum  1st'" [body]="'this is a body text testing first way this is a body text testing first way this is a body text testing first way'"></app-note-card> 
+        <app-note-card></app-note-card>
+        <app-note-card [title]="cardTitle" [body]="'testingt way this is a body text testing first way'"></app-note-card> 
+
+        <app-note-card [title]="'Hello word' " [body]="'sugar chaipatii'"></app-note-card>
+        <app-note-card [title]="todayTitle" [body]="'today i want to go to take my learning licence from RTO'"></app-note-card>
+        <app-note-card [title]="todayTitle" [body]="'today i want to go to take my learning licence from RTO'"></app-note-card> -->
+      
+        
+    </div>
+    
+
+    <button class="button floating-add-button is-primary"  routerLink="new">+</button>
+    </div>
+    <div *ngIf="notes.length === 0" class="no-contents-container">
+      
+      <h2>No notes available</h2>
+      <em>Add a note to get started!</em>
+    </div>
+<!-- </div> -->

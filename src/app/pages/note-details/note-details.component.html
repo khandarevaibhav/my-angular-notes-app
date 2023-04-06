@@ -1,0 +1,29 @@
+<div class="form-container">
+
+    <form #noteForm="ngForm"  (ngSubmit)="onSubmit(noteForm)">
+        <!--1. Both are a bulma framework classes  -->
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input  type="text" required  name="title" [ngModel]="note.title" class="input">
+            </div>
+        </div>
+       <!--2. Both are a bulma framework classes  -->
+        <div class="field">
+            <label class="label">Body</label>
+            <div class="control">
+                <textarea class="textarea" required name="body" [ngModel]="note.body"></textarea>
+            </div>
+        </div>
+
+        <div class="field is-grouped is-pulled-right">
+            <div class="control">
+                <button class="button is-text" type="button" (click)="cancel()">Cancel</button>
+
+            </div>
+            <div class="control">
+                <button class="button is-success" type="submit" [disabled]="!noteForm.valid">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
