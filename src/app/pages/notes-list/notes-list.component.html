@@ -17,11 +17,14 @@
     <div class="notes-list">
         
         <app-note-card 
-              *ngFor = "let note of notes; let i=index"
+              *ngFor = "let note of notes; index as i"
               [title]= "note.title" 
-              [body]= "note.body" (click)="test(i)"
-              (click)="deleteNote(i)"></app-note-card> 
+              [body]= "note.body" 
+              (click)="test(i)"
 
+              (deleteClicked)="deleteNote(i)"
+              ></app-note-card>   
+              <!-- (click)="deleteNote(i)" -->
         <!-- <app-note-card [title]="'Loreum  1st'" [body]="'this is a body text testing first way this is a body text testing first way this is a body text testing first way'"></app-note-card> 
         <app-note-card></app-note-card>
         <app-note-card [title]="cardTitle" [body]="'testingt way this is a body text testing first way'"></app-note-card> 

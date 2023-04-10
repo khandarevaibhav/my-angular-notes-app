@@ -1,4 +1,6 @@
-import { Component, ElementRef, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { NotesService } from '../shared/notes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-note-card',
@@ -11,10 +13,13 @@ export class NoteCardComponent implements OnInit{
   // @Input('body') body! : string;
   @Input() title : any;
   @Input() body : any;
-  @Output() routerLink:any;
+  @Output() link:any;
+  @Output() deleteClicked = new EventEmitter();
+
   //An ElementRef is backed by a render-specific element
- 
-  constructor(){}
+   //to update or navigate to that specific notes created one 
+
+   constructor (private noteServices:NotesService, private router: Router) {}
 
   ngOnInit(){
 
@@ -22,9 +27,14 @@ export class NoteCardComponent implements OnInit{
     //The getComputedStyle() method gets the computed CSS properties and values of an HTML element.
 
     
-
+    
   }
-
+  
+  deleteNote(){
+    this.deleteClicked.emit()
+  
+    // this.router.navigateByUrl('/')
+  }
 
 
 

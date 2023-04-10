@@ -2,6 +2,7 @@
  this is for a big card that is include all card  -->
 <div #container class="note-card-container"> 
     <!-- this is for a single card -->
+  <a [routerLink]= "link">
     <div class="note-card-content">          
 
         <h1 class="note-card-title"> {{title}}</h1>
@@ -13,8 +14,8 @@
            </div> 
         </div> 
     </div>
-
-    <div class="delete-button">
+</a>
+    <div class="delete-button" (click)="deleteNote()" >
 
     </div>
 </div>

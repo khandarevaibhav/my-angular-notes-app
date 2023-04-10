@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
@@ -13,7 +13,7 @@ export class NotesListComponent implements OnInit {
   // i!: number;
   // cardTitle:string = 'abc';
   // todayTitle:string = 'RTO Task';
-
+  @Output() link:any;
   notes:Note[]=new Array<Note>(); 
   constructor (private noteServices:NotesService, private router: Router) {}
 
@@ -23,6 +23,9 @@ export class NotesListComponent implements OnInit {
     this.notes = this.noteServices.getAll();
 
   }
+  fetchNotes() {
+    this.notes = this.noteServices.getAll();
+  }
 
   test(i: number) {
     console.log(i);
@@ -31,8 +34,8 @@ export class NotesListComponent implements OnInit {
   }
   deleteNote(id:number){
     this.noteServices.delete(id)
-  
-    this.router.navigateByUrl('/')
+    this.fetchNotes();
+    // this.router.navigateByUrl('/')
   }
 
 }
